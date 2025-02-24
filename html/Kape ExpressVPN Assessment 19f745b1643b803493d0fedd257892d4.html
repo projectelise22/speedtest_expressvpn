@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Kape/ExpressVPN Assessment</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19f745b1-643b-8034-93d0-fedd257892d4" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/gradients_3.png" style="object-position:center 60%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🧑🏻‍💻</span></div><h1 class="page-title">Kape/ExpressVPN Assessment</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1a0745b1-643b-8032-8d8f-c0c9496ef0df" class=""><mark class="highlight-teal">Trial Project - Senior/Staff Engineer</mark></h1><h1 id="1a0745b1-643b-8029-9853-d4ea90a944fe" class="">VPN Speed Test</h1><p id="1a0745b1-643b-80f8-98d3-ea502eee76f8" class="">
+</p><figure class="block-color-brown_background callout" style="white-space:pre-wrap;display:flex" id="1a0745b1-643b-8000-9653-c08a157cdf42"><div style="width:100%"><h3 id="1a0745b1-643b-8046-8d10-c22216153f26" class=""><mark class="highlight-teal">Click the link below to view the solution:</mark></h3><figure id="19f745b1-643b-801f-839a-d735ff76d127" class="link-to-page"><a href="Kape%20ExpressVPN%20Assessment%2019f745b1643b803493d0fedd257892d4/Trial%20Project%20Solution%2019f745b1643b801f839ad735ff76d127.html"><span class="icon">💡</span>Trial Project Solution</a></figure></div></figure><p id="1a0745b1-643b-8043-95fc-efafa60827df" class="">
+</p><h2 id="19f745b1-643b-80e8-b89d-f5ae36714e93" class=""><mark class="highlight-teal_background"><strong>Overview</strong></mark></h2><p id="1a0745b1-643b-8068-bd97-c0c1ba994301" class="">Thank you for your participation in the interview process. We&#x27;re excited to move to the next<br/>stage, which involves a take-home project. This project is designed to assess your coding,<br/>logical thinking, communication, and time management skills.<br/></p><p id="19f745b1-643b-8084-945d-e61a919d3fb6" class=""><br/>Speed is very important to us and we aim to give the best experience to our users. Therefore it<br/>is important to measure the speed without a VPN connection and with it (at step 2) and aim to have the best speed possible (depending on the location of our VPN servers).<br/>Obviously, we have those tools in place and we are not expecting you to do free work for us, the<br/>purpose of this exercise is to see how you are solving problems, designing a solution (tool for<br/>testing), which requires a little human intervention and can scale up and implement it.<br/>The utility should first execute a speed test (you can decide what speed test means) without<br/>connecting to VPN and record the speed results. It should run the speed test 5 times and report<br/>the average of it.<br/></p><p id="1a0745b1-643b-80f3-b83f-ff50e2f78c10" class="">
+</p><h2 id="19f745b1-643b-8070-a4f0-e3735faa831f" class=""><mark class="highlight-teal_background"><strong>Environment</strong></mark></h2><ul id="19f745b1-643b-8084-a06a-e2435c3dcca2" class="bulleted-list"><li style="list-style-type:disc">Development and testing should be conducted in a Linux environment. Recommended<br/>distribution/version: Debian/Ubuntu.<br/></li></ul><ul id="19f745b1-643b-80f0-bb97-e5a4bed22933" class="bulleted-list"><li style="list-style-type:disc">If using Docker containers, consider potential network interference and document any<br/>observed impacts on test results.<br/></li></ul><ul id="19f745b1-643b-80ad-b6b9-dd552a283a22" class="bulleted-list"><li style="list-style-type:disc">If you do your development on a Mac, then docker containers will be mandatory because<br/>the express vpn app for Mac does not support CLI interactions.<br/></li></ul><p id="1a0745b1-643b-80f3-a3e7-d1c5fc2a85c7" class="">
+</p><h2 id="1a0745b1-643b-802c-a643-e488814635f1" class=""><mark class="highlight-teal_background">Technology Stack</mark></h2><ul id="1a0745b1-643b-8045-af28-d6d53ef0596a" class="bulleted-list"><li style="list-style-type:disc">You are free to use NodeJS and Bash. However, other technologies are also acceptable<br/>if they better suit the project needs. (Golang, Rust, Python, Typescript)<br/></li></ul><h2 id="1a0745b1-643b-80cd-a8d2-e28d245e964d" class=""><br/><br/><mark class="highlight-teal_background">VPN Application Interaction</mark></h2><ul id="1a0745b1-643b-8050-b5b5-cce88681f3ed" class="bulleted-list"><li style="list-style-type:disc">The utility should interact with the ExpressVPN Linux application through command-line<br/>scripts.<br/></li></ul><ul id="1a0745b1-643b-800b-960b-c90d80da4073" class="bulleted-list"><li style="list-style-type:disc">Guidelines for handling VPN connections/disconnections via command line will be<br/>provided, if available.<br/></li></ul><p id="1a0745b1-643b-80d8-81cf-d145d7201ab6" class="">
+</p><h2 id="1a0745b1-643b-8029-8247-f9c5a56dd4b0" class=""><mark class="highlight-teal_background">Speed Test Methodology</mark></h2><ul id="1a0745b1-643b-8010-a988-e462e27fee2e" class="bulleted-list"><li style="list-style-type:disc">A &#x27;speed test&#x27; should measure both download and upload speeds, and ping. You may<br/>use, third party libraries/packages to help, or you can build something from scratch<br/></li></ul><ul id="1a0745b1-643b-8063-96da-eac3617242d9" class="bulleted-list"><li style="list-style-type:disc">Execute each speed test consistently across all tests.</li></ul><p id="1a0745b1-643b-80f5-a24e-d0f67a8ba093" class="">
+</p><h2 id="1a0745b1-643b-80b3-8052-f83f09141e97" class=""><mark class="highlight-teal_background">Input</mark></h2><p id="1a0745b1-643b-8050-8a9c-ca45091937ac" class="">The VPN connection to the various locations might impact our time to connect and the speed. It<br/>does not really matter which servers you pick but ideally, we would like to measure 3 main<br/>server locations as mentioned above:<br/></p><ol type="1" id="1a0745b1-643b-80b2-9d47-c468e53cf8c8" class="numbered-list" start="1"><li>Local to your location (same country/city)</li></ol><ol type="1" id="1a0745b1-643b-807a-b4d7-c081aa7ec6f0" class="numbered-list" start="2"><li>Medium distance (i.e. same continent, different city / country)</li></ol><ol type="1" id="1a0745b1-643b-80f2-b1e8-f5dc17f502d2" class="numbered-list" start="3"><li>Long-distance (i.e. the other side of the world)</li></ol><p id="1a0745b1-643b-8056-816e-da4a194e457e" class="">The utility you’ll create will take input as a JSON file. This file should contain 3 different valid<br/>ExpressVPN locations as explained above (each location in a new line)<br/></p><p id="1a0745b1-643b-80f9-8a28-cba93655f459" class="">
+</p><h2 id="1a0745b1-643b-805d-a236-cfd2432470a7" class=""><mark class="highlight-teal_background">Action</mark></h2><ul id="1a0745b1-643b-80a1-b5d4-f9174d1be235" class="bulleted-list"><li style="list-style-type:disc">The utility should read the input file and connect it to the given location.</li></ul><ul id="1a0745b1-643b-8047-9f65-c1c473972a2e" class="bulleted-list"><li style="list-style-type:disc">It should record the time it took for the connection to happen (connection time) and the<br/>internet speed of the connection (based on step 1)<br/></li></ul><ul id="1a0745b1-643b-80f3-ba81-dda8e600f70c" class="bulleted-list"><li style="list-style-type:disc">This action above should repeat 5 times for each location and an average should be<br/>taken per location respectively.<br/></li></ul><p id="1a0745b1-643b-8063-89a6-c749d7fe777d" class="">
+</p><h2 id="1a0745b1-643b-8024-80c9-d5f69d92ea6d" class=""><mark class="highlight-teal_background">Input File Format</mark></h2><ul id="1a0745b1-643b-805a-b888-de7bb9173032" class="bulleted-list"><li style="list-style-type:disc">The input should be a JSON file with the following format:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1a0745b1-643b-8076-a255-fac845ff2ead" class="code"><code class="language-JavaScript">{
+&quot;locations&quot;: [
+{&quot;country&quot;: &quot;Netherlands&quot;, &quot;city&quot;: &quot;Amsterdam&quot;},
+{&quot;country&quot;: &quot;Romania&quot;, &quot;city&quot;: &quot;Bucharest&quot;},
+{&quot;country&quot;: &quot;Canada&quot;, &quot;city&quot;: &quot;Toronto&quot;}
+]
+}</code></pre><p id="1a0745b1-643b-802d-b701-f203ec0e01b5" class="">
+</p><h2 id="1a0745b1-643b-809a-9fa9-db717fa591ed" class=""><mark class="highlight-teal_background">Output File Format</mark></h2><ul id="1a0745b1-643b-807d-bf3d-c9bac48c539b" class="bulleted-list"><li style="list-style-type:disc">Output should be recorded in a JSON file with the structure:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1a0745b1-643b-802b-ad28-ea4574d5ec86" class="code"><code class="language-JavaScript">{
+	&quot;MachineName&quot;: &quot;testMachine&quot;,
+	&quot;OS&quot;: &quot;Ubuntu 18.04&quot;,
+	&quot;WithoutVPN&quot;: &quot;100 Mbps&quot;,
+	&quot;VPNStats&quot;: [
+		{
+			&quot;LocationName&quot;: &quot;Romania&quot;,
+			&quot;TimeToConnect&quot;: &quot;0.5 sec&quot;,
+			&quot;VPNSpeed&quot;: &quot;95 Mbps&quot;
+		},
+		...
+	]
+}</code></pre><ul id="1a0745b1-643b-80f7-86d8-f2de1cb2b1b0" class="bulleted-list"><li style="list-style-type:disc">Include additional data points like timestamp and error logs, if applicable.</li></ul><p id="19f745b1-643b-8037-817d-cd55b8c8051f" class="">
+</p><h2 id="1a0745b1-643b-8088-85be-f6a5b493db00" class=""><mark class="highlight-teal_background">Handling Inaccuracies</mark></h2><ul id="1a0745b1-643b-808a-bcc2-ee36b61881bb" class="bulleted-list"><li style="list-style-type:disc">Document any potential inaccuracies due to testing environment limitations.</li></ul><ul id="1a0745b1-643b-80ca-a3e5-e7ee8384c3bf" class="bulleted-list"><li style="list-style-type:disc">Describe the acceptable level of inaccuracy and how it is measured or estimated.</li></ul><h2 id="1a0745b1-643b-80cb-b117-d2250b769e70" class=""><br/><br/><mark class="highlight-teal_background">Documentation</mark></h2><ul id="1a0745b1-643b-806b-9483-e6766d75c2a5" class="bulleted-list"><li style="list-style-type:disc">Provide detailed documentation, including setup instructions, execution steps, and<br/>troubleshooting guidelines.<br/></li></ul><ul id="1a0745b1-643b-802e-a919-eccdb1b386bf" class="bulleted-list"><li style="list-style-type:disc">Document any assumptions or decisions made during the development process.</li></ul><p id="1a0745b1-643b-8038-b027-ecc28d5492e5" class="">
+</p><h2 id="1a0745b1-643b-80b8-a689-e141f060eb26" class=""><mark class="highlight-teal_background">Error Handling and Logging</mark></h2><ul id="1a0745b1-643b-8029-a060-cef9c965efbb" class="bulleted-list"><li style="list-style-type:disc">Describe how the utility handles errors, especially failed VPN connections or speed<br/>tests.<br/></li></ul><ul id="1a0745b1-643b-80d3-8065-ea7ed2aee87e" class="bulleted-list"><li style="list-style-type:disc">Include logging functionality for debugging and analysis purposes.<br/><br/></li></ul><h2 id="1a0745b1-643b-8052-8c2d-ff89b3d6e467" class=""><mark class="highlight-teal_background">Scalability and Automation</mark></h2><ul id="1a0745b1-643b-806e-beb9-f32a28eb255c" class="bulleted-list"><li style="list-style-type:disc">Design the utility with scalability in mind. Explain how it can be adapted for larger scale<br/>testing.<br/></li></ul><ul id="1a0745b1-643b-80f9-a21c-ea0f2f8de387" class="bulleted-list"><li style="list-style-type:disc">The utility should be as automated as possible, requiring minimal human intervention.<br/>Testing Requirements<br/></li></ul><ul id="1a0745b1-643b-808d-91b2-ff9a90507142" class="bulleted-list"><li style="list-style-type:disc">Include unit tests and integration tests. Specify any coverage metrics if applicable.<br/>Query Resolution<br/></li></ul><ul id="1a0745b1-643b-8019-9c13-d163536420a7" class="bulleted-list"><li style="list-style-type:disc">For any queries or clarifications, please use [specify communication channel] for timely<br/>responses.<br/></li></ul><h2 id="1a0745b1-643b-80f7-8106-dd76d4b338da" class=""><br/><br/><mark class="highlight-teal_background">Deliverables</mark></h2><ul id="1a0745b1-643b-8056-8674-f90ee13b73ad" class="bulleted-list"><li style="list-style-type:disc">Utility code, pushed into the repository or in an archive file format.</li></ul><ul id="1a0745b1-643b-80cb-936a-fdf2d934cca6" class="bulleted-list"><li style="list-style-type:disc">Include all necessary tests.</li></ul><ul id="1a0745b1-643b-8093-8ff1-d30b8f3ce0b9" class="bulleted-list"><li style="list-style-type:disc">A README file with detailed setup and execution steps.</li></ul><ul id="1a0745b1-643b-80d1-8d28-d756c71a9406" class="bulleted-list"><li style="list-style-type:disc">JSON or flat file results from your test run.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
