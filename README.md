@@ -1,7 +1,9 @@
 ## Utility for Testing Speed with ExpressVPN
 
 ### Notes
-- Notes for creating the utility can be found here:
+- Notes for creating the utility can be found here: docs/
+- I am currently checking how to publish this in Github Pages(html created from Notion).
+So to view the html files, please download them for now 😔 
 
 ### Usage
 
@@ -36,4 +38,8 @@
 5. **Run the Tests for the Utility Script**:
    ```sh
    pytest tests/util_test.py -v
+
+### Github References:
+- Speedtest: https://github.com/robinmanuelthiel/speedtest.git
+- ExpressVPN with Docker: https://github.com/polkaned/dockerfiles.git
    
