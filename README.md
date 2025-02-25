@@ -26,7 +26,8 @@ So to view the html files, please download them for now 😔
      --privileged \ 
      --tty=true \ 
      --name=name_of_container \ 
-     image_name
+     image_name \
+     /bin/bash
    ```
 
 3. **Run the Utility Script**:
