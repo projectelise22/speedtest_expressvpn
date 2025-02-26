@@ -2,8 +2,8 @@
 
 ### Notes
 - Notes for creating the utility can be found here: docs/
-- I am currently checking how to publish this in Github Pages(html created from Notion).
-So to view the html files, please download them for now 😔 
+- I am currently checking how to publish this in Github Pages(html created from Notion). \
+So to view the html files, please download them for now 😔.
 
 ### Usage
 
@@ -17,7 +17,7 @@ So to view the html files, please download them for now 😔
 2. **Run the Container**:
    ```sh
    docker run --network=host -it \                      
-     --env=ACTIVATION_CODE=E27YSF3WBFBGUNAUTGMUBBO \ 
+     --env=ACTIVATION_CODE=your_activation_code \ 
      --env=SERVER=smart \ 
      --env=PREFERRED_PROTOCOL=auto \ 
      --env=LIGHTWAY_CIPHER=auto \ 
